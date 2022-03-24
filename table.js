@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function (event) {
     var rows = document.querySelectorAll('row');
 
-    for (i = 0; i < rows.length; i++) {
+    for (var i = 0; i < rows.length; i++) {
         createTable(rows[i]);
     }
 });
@@ -20,11 +20,11 @@ function createTable(domElement) {
     tbody.style.height = "fit-content";
     tr.style.height = "fit-content";
 
-    for (j = 0; j < domElement.children.length; j++) {
+    for (var j = 0; j < domElement.children.length; j++) {
         var td = document.createElement('td');
 
         td.innerHTML = domElement.children[j].innerHTML;
-        td.style.width = `${calcuteWeightInPercentage(domElement.getAttribute('sum'), domElement.children[j].getAttribute('weight'))}%`;
+        td.style.width = calcuteWeightInPercentage(domElement.getAttribute('sum'), domElement.children[j].getAttribute('weight')) + "%";
 
         tr.appendChild(td);
     }
@@ -36,8 +36,8 @@ function createTable(domElement) {
 }
 
 function calcuteWeightInPercentage(sum, weight) {
-    sumInt = parseInt(sum);
-    weightInt = parseInt(weight);
+    var sumInt = parseInt(sum);
+    var weightInt = parseInt(weight);
 
     return ((weightInt / sumInt) * 100);
 }
